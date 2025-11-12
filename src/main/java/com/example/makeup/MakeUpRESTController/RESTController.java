@@ -14,27 +14,27 @@ public class RESTController {
     @Autowired
     MakeUpService makeUpService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(path="all" ,method = RequestMethod.GET)
     public List<MakeUp> getAllMakeUp(){
         return makeUpService.getAllMakeUp();
     }
 
-    @RequestMapping(value="/{id}",method = RequestMethod.GET)
+    @RequestMapping(value="/getbyid/{id}",method = RequestMethod.GET)
     public MakeUp getMakeUpById(@PathVariable("id") Long id) {
         return makeUpService.getMakeUp(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(path="/addprod",method = RequestMethod.POST)
     public MakeUp createMakeUp(@RequestBody MakeUp makeUp) {
         return makeUpService.saveMakeUp(makeUp);
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @RequestMapping(path="/updateprod",method = RequestMethod.PUT)
     public MakeUp updateMakeUp(@RequestBody MakeUp makeUp) {
         return makeUpService.updateMakeUp(makeUp);
     }
 
-    @RequestMapping(value="/{id}",method = RequestMethod.DELETE)
+    @RequestMapping(value="/delprod/{id}",method = RequestMethod.DELETE)
     public void deleteMakeUp(@PathVariable("id") Long id)
     {
         makeUpService.deleteMakeUpById(id);
@@ -44,6 +44,12 @@ public class RESTController {
     public List<MakeUp> getMakeUpByCatId(@PathVariable("idMrq") Long idMrq) {
         return makeUpService.findByMarqueIdMarque(idMrq);
     }
+
+    @RequestMapping(value="/prodsByName/{nom}",method = RequestMethod.GET)
+    public List<MakeUp> findByNomProduitContains(@PathVariable("nom") String nom) {
+        return makeUpService.findByDesignationContains(nom);
+    }
+
 
 
 

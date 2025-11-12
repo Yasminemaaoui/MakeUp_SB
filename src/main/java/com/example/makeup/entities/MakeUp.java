@@ -1,5 +1,6 @@
 package com.example.makeup.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -11,10 +12,12 @@ public class MakeUp {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty("code_produit")
     private Long codeProduit;
     private String designation;
     private String categorie;
     private double tarif;
+    @JsonProperty("date_expiration")
     private Date dateExpiration;
     @ManyToOne
     private Marque marque;

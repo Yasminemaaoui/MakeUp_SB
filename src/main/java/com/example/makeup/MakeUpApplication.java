@@ -1,6 +1,7 @@
 package com.example.makeup;
 
 import com.example.makeup.entities.MakeUp;
+import com.example.makeup.entities.Marque;
 import com.example.makeup.repository.MakeUpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,7 +16,7 @@ public class MakeUpApplication implements CommandLineRunner {
     private RepositoryRestConfiguration repositoryRestConfiguration;
     @Override
     public void run(String... args) throws Exception {
-        repositoryRestConfiguration.exposeIdsFor(MakeUp.class);
+        repositoryRestConfiguration.exposeIdsFor(MakeUp.class, Marque.class);
     }
 
     public static void main(String[] args) {
